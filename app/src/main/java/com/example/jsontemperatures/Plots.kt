@@ -26,7 +26,7 @@ class Plots : AppCompatActivity() {
         onBackPressed()
         return true
     }
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plots)
@@ -34,7 +34,7 @@ class Plots : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "New Activity"
+        actionbar!!.title = getString(R.string.TitleOfPlots)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)

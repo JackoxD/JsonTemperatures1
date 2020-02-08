@@ -13,5 +13,7 @@
     <string name="TempInside">Temperatura Wewnątrz</string>
     <string name="TempOutside">Temperatura na zewnątrz</string>
     <string name="Time">Czas</string>
+    <string name="TitleOfPlots">Wykres</string>
+    <string name="TitleOfTemperatures">Temperatury</string>
 
 </resources>

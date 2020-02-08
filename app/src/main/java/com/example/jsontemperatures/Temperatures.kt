@@ -25,7 +25,7 @@ class Temperatures : AppCompatActivity() {
         //actionbar
         val actionbar = supportActionBar
         //set actionbar title
-        actionbar!!.title = "New Activity"
+        actionbar!!.title = getString(R.string.TitleOfTemperatures)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
