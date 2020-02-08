@@ -13,9 +13,25 @@ class Temperatures : AppCompatActivity() {
         lateinit var adapter: TemperaturesListAdapter
 
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_temperatures)
+
+        //actionbar
+        val actionbar = supportActionBar
+        //set actionbar title
+        actionbar!!.title = "New Activity"
+        //set back button
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
+
+
 
         //Tylko załadowanie danych do RecyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.temperaturesRecyclerView)
@@ -29,3 +45,5 @@ class Temperatures : AppCompatActivity() {
         rW.adapter = adapter
     }
 }
+
+
