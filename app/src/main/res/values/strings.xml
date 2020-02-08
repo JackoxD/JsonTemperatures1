@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ProjectPUM</string>
+    <string name="lbl_tempinside">Wewnątrz</string>
+    <string name="lbl_tempoutside">Zewnątrz</string>
+    <string name="lbl_time">Czas</string>
+    <string name="btnTemperatures">Tablica pomiarów</string>
+    <string name="btnPlots">Wykres</string>
+    <string name="ActualTime">Najnowsze dane:\n%1$s</string>
+    <string name="ActualInside">Wewnątrz:\n%1$s</string>
+    <string name="ActualOutside">Zewnątrz:\n%1$s</string>
+    <string name="DataWait">Trwa pobieranie danych. Proszę czekać...</string>
+    <string name="NoData">Błąd pobierania danych. Spróbuj ponownie później.</string>
+    <string name="TempInside">Temperatura Wewnątrz</string>
+    <string name="TempOutside">Temperatura na zewnątrz</string>
+    <string name="Time">Czas</string>
+
+</resources>
