@@ -30,7 +30,10 @@ class MainActivity : AppCompatActivity() {
         val mActualInside = findViewById<TextView?>(R.id.txtActualInside)
         val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
 
-
+        //Inicjalizacja tekstów TextView
+        mActualTime?.setText(R.string.NoData)
+        mActualInside?.text = ""
+        mActualOutside?.text = ""
 
         if(savedInstanceState!=null){
             val date = savedInstanceState?.getCharSequence("date")
@@ -55,10 +58,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        //Inicjalizacja tekstów TextView
-        mActualTime?.setText(R.string.NoData)
-        mActualInside?.text = ""
-        mActualOutside?.text = ""
+
 
         //---Ustawienie Buttonow na nieklikalne
         btnPlots.alpha = 0.5f
