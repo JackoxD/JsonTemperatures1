@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var lastTempInside: String
     lateinit var lastTempOutside: String
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         val mActualTime = findViewById<TextView?>(R.id.txtActualTime)
         val mActualInside = findViewById<TextView?>(R.id.txtActualInside)
         val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
+
+
 
         if(savedInstanceState!=null){
             val date = savedInstanceState?.getCharSequence("date")
@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 ), outside
             )
         }
+
         //Inicjalizacja tekstów TextView
         mActualTime?.setText(R.string.NoData)
         mActualInside?.text = ""
