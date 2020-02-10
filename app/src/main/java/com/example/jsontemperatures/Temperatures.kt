@@ -28,7 +28,6 @@ class Temperatures : AppCompatActivity() {
         actionbar!!.title = getString(R.string.TitleOfTemperatures)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
-        actionbar.setDisplayHomeAsUpEnabled(true)
 
 
 

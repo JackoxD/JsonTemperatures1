@@ -17,16 +17,22 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
-    val mActualTime = findViewById<TextView?>(R.id.txtActualTime)
-    val mActualInside = findViewById<TextView?>(R.id.txtActualInside)
-    val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
+
+    lateinit var lastMeasureTime: String
+    lateinit var lastTempInside: String
+    lateinit var lastTempOutside: String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*if(savedInstanceState!=null){
+        val mActualTime = findViewById<TextView?>(R.id.txtActualTime)
+        val mActualInside = findViewById<TextView?>(R.id.txtActualInside)
+        val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
+
+        if(savedInstanceState!=null){
             val date = savedInstanceState?.getCharSequence("date")
             mActualTime?.text = String.format(
                 getString(
@@ -35,19 +41,23 @@ class MainActivity : AppCompatActivity() {
             )
 
             val inside = savedInstanceState?.getCharSequence("inside")
-            mActualTime?.text = String.format(
+            mActualInside?.text = String.format(
                 getString(
                     R.string.ActualInside
                 ), inside
             )
 
             val outside = savedInstanceState?.getCharSequence("outside")
-            mActualTime?.text = String.format(
+            mActualOutside?.text = String.format(
                 getString(
                     R.string.ActualOutside
                 ), outside
             )
-        }*/
+        }
+        //Inicjalizacja tekstów TextView
+        mActualTime?.setText(R.string.NoData)
+        mActualInside?.text = ""
+        mActualOutside?.text = ""
 
         //---Ustawienie Buttonow na nieklikalne
         btnPlots.alpha = 0.5f
@@ -105,20 +115,23 @@ class MainActivity : AppCompatActivity() {
                         //Odpowiedz OK!
                         DataTemperatures.temperatures = response.body()!!
                         ///----LABELE Z AKTUALNA TEMPERATURA
+                        lastMeasureTime = DataTemperatures.temperatures.last().measureTime
+                        lastTempInside =  DataTemperatures.temperatures.last().temperatureInsideCelcious
+                        lastTempOutside = DataTemperatures.temperatures.last().temperatureOutsideCelcious
                         mActualTime?.text = String.format(
                             getString(
                                 R.string.ActualTime
-                            ), DataTemperatures.temperatures.last().measureTime
+                            ), lastMeasureTime
                         )
                         mActualInside?.text = String.format(
                             getString(
                                 R.string.ActualInside
-                            ), DataTemperatures.temperatures.last().temperatureInsideCelcious
+                            ), lastTempInside
                         )
                         mActualOutside?.text = String.format(
                             getString(
                                 R.string.ActualOutside
-                            ), DataTemperatures.temperatures.last().temperatureOutsideCelcious
+                            ), lastTempOutside
                         )
                         //Uaktywnienie Buttonów
                         buttonOnClick()
@@ -142,15 +155,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-   /* override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val date = DataTemperatures.temperatures.last().measureTime
-        outState.putCharSequence("date", date)
-        val inside = DataTemperatures.temperatures.last().temperatureInsideCelcious
-        outState.putCharSequence("inside", inside)
-        val outside = DataTemperatures.temperatures.last().temperatureOutsideCelcious
-        outState.putCharSequence("outside", outside)
-    }*/
+    override fun onSaveInstanceState(outState: Bundle) {
+        if(::lastMeasureTime.isInitialized) {
+            super.onSaveInstanceState(outState)
+            val date = lastMeasureTime
+            outState.putCharSequence("date", date)
+            val inside = lastTempInside
+            outState.putCharSequence("inside", inside)
+            val outside = lastTempOutside
+            outState.putCharSequence("outside", outside)
+        }
+    }
 
 
 

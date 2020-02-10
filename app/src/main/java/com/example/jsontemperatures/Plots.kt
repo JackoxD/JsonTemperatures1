@@ -37,7 +37,6 @@ class Plots : AppCompatActivity() {
         actionbar!!.title = getString(R.string.TitleOfPlots)
         //set back button
         actionbar.setDisplayHomeAsUpEnabled(true)
-        actionbar.setDisplayHomeAsUpEnabled(true)
 
         lineChart.setNoDataText(getString(R.string.DataWait))
 
