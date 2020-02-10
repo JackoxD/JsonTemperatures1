@@ -3,6 +3,7 @@ package com.example.jsontemperatures
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,10 +17,37 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
+    val mActualTime = findViewById<TextView?>(R.id.txtActualTime)
+    val mActualInside = findViewById<TextView?>(R.id.txtActualInside)
+    val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /*if(savedInstanceState!=null){
+            val date = savedInstanceState?.getCharSequence("date")
+            mActualTime?.text = String.format(
+                getString(
+                    R.string.ActualTime
+                ), date
+            )
+
+            val inside = savedInstanceState?.getCharSequence("inside")
+            mActualTime?.text = String.format(
+                getString(
+                    R.string.ActualInside
+                ), inside
+            )
+
+            val outside = savedInstanceState?.getCharSequence("outside")
+            mActualTime?.text = String.format(
+                getString(
+                    R.string.ActualOutside
+                ), outside
+            )
+        }*/
 
         //---Ustawienie Buttonow na nieklikalne
         btnPlots.alpha = 0.5f
@@ -44,9 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //----LABELE Z AKTUALNYM CZASEM
-        val mActualTime = findViewById<TextView?>(R.id.txtActualTime)
-        val mActualInside = findViewById<TextView?>(R.id.txtActualInside)
-        val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
+
 
 
         //-----JSON
@@ -113,8 +139,18 @@ class MainActivity : AppCompatActivity() {
             mActualOutside?.text = ""
         }
 
+
     }
 
+   /* override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val date = DataTemperatures.temperatures.last().measureTime
+        outState.putCharSequence("date", date)
+        val inside = DataTemperatures.temperatures.last().temperatureInsideCelcious
+        outState.putCharSequence("inside", inside)
+        val outside = DataTemperatures.temperatures.last().temperatureOutsideCelcious
+        outState.putCharSequence("outside", outside)
+    }*/
 
 
 
