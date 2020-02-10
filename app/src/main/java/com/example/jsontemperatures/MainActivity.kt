@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val mActualOutside = findViewById<TextView?>(R.id.txtActualOutside)
 
         //Inicjalizacja tekstów TextView
-        mActualTime?.setText(R.string.NoData)
+        mActualTime?.setText(R.string.DataWait)
         mActualInside?.text = ""
         mActualOutside?.text = ""
 
